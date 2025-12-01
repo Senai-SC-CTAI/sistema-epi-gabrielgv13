@@ -1,14 +1,16 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>{% block title %}Estoque de EPI{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/app.css' %}">
-</head>
-    <header>
 
-    </header>
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Estoque de EPI{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<header>
+
+</header>
+
 <body>
   <aside class="sidebar">
     <div class="logo">
@@ -16,23 +18,35 @@
       <h1>Sistema de Gestão de EPIs</h1>
     </div>
     <nav class="menu">
-      {% block nav %}
-      {% endblock %}
+      <a href="{% url 'dashboard:app_dashboard' %}"
+        class="{% if request.resolver_match.url_name == 'app_dashboard' %}active{% endif %}">Dashboard</a>
+      <a href="{% url 'colaboradores:app_users' %}"
+        class="{% if 'users' in request.resolver_match.url_name %}active{% endif %}">Colaboradores</a>
+      <a href="{% url 'equipamentos:app_items' %}"
+        class="{% if 'items' in request.resolver_match.url_name %}active{% endif %}">Equipamentos</a>
+      <a href="{% url 'emprestimos:app_requests' %}"
+        class="{% if 'requests' in request.resolver_match.url_name %}active{% endif %}">Empréstimos</a>
+      <a href="{% url 'historico:app_history' %}"
+        class="{% if 'history' in request.resolver_match.url_name %}active{% endif %}">Movimentações</a>
+      <a href="{% url 'relatorios:app_reports' %}"
+        class="{% if 'reports' in request.resolver_match.url_name %}active{% endif %}">Relatórios</a>
+      <a href="{% url 'app_configs' %}"
+        class="{% if 'configs' in request.resolver_match.url_name %}active{% endif %}">Configurações</a>
     </nav>
   </aside>
 
   <main class="content">
     <div class="topbar">
       <h2 id="page-title">{% block page_title %}Dashboard{% endblock %}</h2>
-      
+
       <div class="user">
         <div class="user-icon">👤</div>
         <strong>{{ request.user.username }}</strong>
 
         <!-- Botão de Logout fica aqui -->
         <form method="post" action="{% url 'logout' %}" style="display: inline; margin-left: 5px;">
-            {% csrf_token %}
-            <button type="submit" class="btn-logout">(Sair)</button>
+          {% csrf_token %}
+          <button type="submit" class="btn-logout">(Sair)</button>
         </form>
 
       </div>
@@ -44,7 +58,8 @@
     </div>
   </main>
 </body>
-    <footer>
-        
-    </footer>
+<footer>
+
+</footer>
+
 </html>

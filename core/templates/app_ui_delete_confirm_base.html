@@ -1,30 +1,20 @@
 {% extends 'base_app.html' %}
 
 {% block page_title %}
-    Confirmar Exclusão
-{% endblock %}
-
-{% block nav %}
-    <a href="{% url 'app_dashboard' %}" {% if active_nav == 'dashboard' %}class="active"{% endif %}>Dashboard</a>
-    <a href="{% url 'app_users' %}" {% if active_nav == 'users' %}class="active"{% endif %}>Colaboradores</a>
-    <a href="{% url 'app_items' %}" {% if active_nav == 'items' %}class="active"{% endif %}>Equipamentos</a>
-    <a href="{% url 'app_requests' %}" {% if active_nav == 'requests' %}class="active"{% endif %}>Empréstimos</a>
-    <a href="{% url 'app_history' %}" {% if active_nav == 'history' %}class="active"{% endif %}>Movimentações</a>
-    <a href="{% url 'app_reports' %}" {% if active_nav == 'reports' %}class="active"{% endif %}>Relatórios</a>
-    <a href="{% url 'app_configs' %}" {% if active_nav == 'configs' %}class="active"{% endif %}>Configurações</a>
+Confirmar Exclusão
 {% endblock %}
 
 {% block content %}
-    <h2>Confirmar Exclusão</h2>
-    
-    <p>Você tem certeza que deseja excluir <strong>"{{ item.nome }}"</strong>?</p>
-    <p>Esta ação não pode ser desfeita.</p>
+<h2>Confirmar Exclusão</h2>
 
-    <form method="POST">
-        {% csrf_token %}
-        <div class="form-actions">
-            <button type="submit" class="btn-delete">Sim, excluir</button>
-            <a href="javascript:history.back()" class="btn-cancel">Cancelar</a>
-        </div>
-    </form>
+<p>Você tem certeza que deseja excluir <strong>"{{ item.nome }}"</strong>?</p>
+<p>Esta ação não pode ser desfeita.</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-actions">
+        <button type="submit" class="btn-delete">Sim, excluir</button>
+        <a href="javascript:history.back()" class="btn-cancel">Cancelar</a>
+    </div>
+</form>
 {% endblock %}

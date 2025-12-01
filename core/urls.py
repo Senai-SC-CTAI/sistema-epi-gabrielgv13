@@ -1,5 +1,5 @@
 # urls.py
-from django.urls import path
+from django.urls import path, include
 from . import views
 from django.contrib.auth import views as auth_views
 
@@ -11,24 +11,23 @@ urlpatterns = [
     #Rota de Logout
     path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
     
-    path('app/dashboard', views.app_dashboard, name='app_dashboard'),
-
-    # Users
-    path('app/users', views.app_users, name='app_users'), 
-    path('app/users/create/', views.app_users_create, name='app_users_create'),
-    path('app/users/edit/<int:pk>/', views.app_users_edit, name='app_users_edit'),
-    path('app/users/delete/<int:pk>/', views.app_users_delete, name='app_users_delete'),
+    # Dashboard
+    path('app/dashboard/', include('dashboard.urls')),
     
-    # Items
-    path('app/items', views.app_items, name='app_items'),
-    path('app/items/create/', views.app_items_create, name='app_items_create'),
-    path('app/items/edit/<int:pk>/', views.app_items_edit, name='app_items_edit'),
-    path('app/items/delete/<int:pk>/', views.app_items_delete, name='app_items_delete'),
+    # Users (Colaboradores)
+    path('app/users/', include('colaboradores.urls')), 
+    
+    # Items (Equipamentos)
+    path('app/items/', include('equipamentos.urls')),
 
-    # Outras rotas
-    path('app/requests', views.app_requests, name='app_requests'),
-    path('app/history', views.app_history, name='app_history'),
-    path('app/reports', views.app_reports, name='app_reports'),
+    # Emprestimos (Requests)
+    path('app/requests/', include('emprestimos.urls')),
+
+    # History
+    path('app/history/', include('historico.urls')),
+    
+    # Reports
+    path('app/reports/', include('relatorios.urls')),
     
     # --- ÁREA DE CONFIGURAÇÕES ---
     path('app/configs', views.app_configs, name='app_configs'),

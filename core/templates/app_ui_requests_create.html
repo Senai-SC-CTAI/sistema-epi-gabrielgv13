@@ -1,0 +1,146 @@
+{% extends 'base_app.html' %}
+
+{% block page_title %}
+{{ page_title }}
+{% endblock %}
+
+{% block content %}
+<h2>{{ page_title }}</h2>
+
+{% if messages %}
+<div class="messages-container-form">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+<form method="POST" class="form-default" id="emprestimoForm">
+    {% csrf_token %}
+
+    <!-- Renderizar campos manualmente ou usar as_p e injetar o display de estoque via JS -->
+    <!-- Vamos usar as_p e manipular via JS para inserir o display após o campo equipamento -->
+    {{ form.as_p }}
+
+    <!-- Container para mostrar o estoque (será movido via JS) -->
+    <div id="stock-display-container" style="margin-bottom: 15px; font-weight: bold; display: none;">
+        Estoque Disponível: <span id="stock-value">--</span>
+    </div>
+
+    <div class="form-actions">
+        <button type="submit" class="btn-save">Salvar</button>
+        <a href="{% url 'emprestimos:app_requests' %}" class="btn-cancel">Voltar para Lista</a>
+    </div>
+</form>
+
+<style>
+    .messages-container-form {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .message {
+        padding: 15px 25px;
+        border-radius: 5px;
+        color: #fff;
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    .message.success {
+        background-color: #28a745;
+    }
+
+    .message.error {
+        background-color: #dc3545;
+    }
+
+    .stock-warning {
+        color: #dc3545;
+    }
+
+    .stock-ok {
+        color: #28a745;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Dados de estoque passados pela view
+        const stockData = {{ equipamentos_json| safe
+    }};
+
+    const equipSelect = document.getElementById('id_equipamento');
+    const quantityInput = document.getElementById('id_quantidade');
+    const stockContainer = document.getElementById('stock-display-container');
+    const stockValueSpan = document.getElementById('stock-value');
+    const form = document.getElementById('emprestimoForm');
+
+    // Inserir o display de estoque logo após o select de equipamento
+    if (equipSelect) {
+        equipSelect.parentNode.insertBefore(stockContainer, equipSelect.nextSibling);
+    }
+
+    function updateStockDisplay() {
+        const equipId = equipSelect.value;
+        if (equipId && stockData[equipId] !== undefined) {
+            const currentStock = stockData[equipId];
+            const requestedQty = parseInt(quantityInput.value) || 0;
+            const remaining = currentStock - requestedQty;
+
+            stockValueSpan.textContent = remaining;
+            stockContainer.style.display = 'block';
+
+            if (remaining < 0) {
+                stockValueSpan.className = 'stock-warning';
+                // Opcional: Desabilitar botão de salvar ou mostrar erro
+            } else {
+                stockValueSpan.className = 'stock-ok';
+            }
+        } else {
+            stockContainer.style.display = 'none';
+        }
+    }
+
+    if (equipSelect) {
+        equipSelect.addEventListener('change', updateStockDisplay);
+    }
+
+    if (quantityInput) {
+        quantityInput.addEventListener('input', updateStockDisplay);
+    }
+
+    // Validação no submit
+    form.addEventListener('submit', function (e) {
+        const equipId = equipSelect.value;
+        if (equipId && stockData[equipId] !== undefined) {
+            const currentStock = stockData[equipId];
+            const requestedQty = parseInt(quantityInput.value) || 0;
+
+            if (requestedQty > currentStock) {
+                e.preventDefault();
+                alert('Quantidade indisponível em estoque! Estoque atual: ' + currentStock);
+            }
+        }
+    });
+
+    // Inicializar display se já houver valor selecionado
+    updateStockDisplay();
+
+    // Mensagens (código original)
+    const messageContainer = document.querySelector('.messages-container-form');
+    if (messageContainer) {
+        setTimeout(() => {
+            messageContainer.style.transition = 'opacity 0.5s ease';
+            messageContainer.style.opacity = '0';
+            setTimeout(() => {
+                messageContainer.style.display = 'none';
+            }, 500);
+        }, 2000);
+    }
+    });
+</script>
+{% endblock %}

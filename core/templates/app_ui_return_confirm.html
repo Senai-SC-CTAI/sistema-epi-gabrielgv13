@@ -1,0 +1,54 @@
+{% extends 'base_app.html' %}
+
+{% block page_title %}
+{{ page_title }}
+{% endblock %}
+
+{% block content %}
+<div class="confirm-container">
+    <h2>{{ page_title }}</h2>
+    <p>Tem certeza que deseja devolver o empréstimo de <strong>{{ item }}</strong>?</p>
+
+    <div class="item-details">
+        <p><strong>Colaborador:</strong> {{ item.nome.nome }}</p>
+        <p><strong>Equipamento:</strong> {{ item.equipamento.nome }}</p>
+        <p><strong>Quantidade:</strong> {{ item.quantidade }}</p>
+    </div>
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-actions">
+            <button type="submit" class="btn-delete" style="background-color: #ffc107; color: #000;">Confirmar
+                Devolução</button>
+            <a href="{% url 'emprestimos:app_requests' %}" class="btn-cancel">Cancelar</a>
+        </div>
+    </form>
+</div>
+
+<style>
+    .confirm-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .item-details {
+        margin: 20px 0;
+        text-align: left;
+        background: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+    }
+
+    .form-actions {
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+</style>
+{% endblock %}

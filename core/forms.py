@@ -1,7 +1,6 @@
 # forms.py
 from django import forms
 from django.contrib.auth.models import User
-from .models import Colaborador, Equipamento
 
 class LoginForm(forms.Form):
     # O widget de EmailInput garante a validação básica do formato
@@ -51,33 +50,3 @@ class RegistrationForm(forms.Form):
             raise forms.ValidationError("As senhas não coincidem. Tente novamente.")
         
         return cleaned_data
-
-class ColaboradorForm(forms.ModelForm):
-    class Meta:
-        model = Colaborador
-        fields = ['nome', 'email','funcao'] # Campos que aparecerão no formulário
-        widgets = {
-            'nome': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Nome completo'}),
-            'email': forms.EmailInput(attrs={'class': 'form-input', 'placeholder': 'email@empresa.com'}),
-            'funcao': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Função'}),
-        }
-        labels = {
-            'nome': 'Nome do Colaborador',
-            'email': 'Email Profissional',
-            'funcao': 'Função do Colaborador',
-        }
-
-class EquipamentoForm(forms.ModelForm):
-    class Meta:
-        model = Equipamento
-        fields = ['nome', 'marca', 'quantidade']
-        widgets = {
-            'nome': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Ex: Capacete'}),
-            'marca': forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Ex: 3M'}),
-            'quantidade': forms.NumberInput(attrs={'class': 'form-input', 'min': '0'}),
-        }
-        labels = {
-            'nome': 'Nome do Equipamento',
-            'marca': 'Marca',
-            'quantidade': 'Quantidade em Estoque',
-        }

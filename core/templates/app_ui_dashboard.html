@@ -1,23 +1,22 @@
 {% extends 'base_app.html' %}
 
-    {% block page_title %}
-        Dashboard
-    {% endblock %}
+{% block page_title %}
+Dashboard
+{% endblock %}
 
-    {% block nav %}
-        <a href="{% url 'app_dashboard' %}" class="active">Dashboard</a>
-        <a href="{% url 'app_users' %}">Colaboradores</a>
-        <a href="{% url 'app_items' %}">Equipamentos</a>
-        <a href="{% url 'app_requests' %}">Empréstimos</a>
-        <a href="{% url 'app_history' %}">Movimentações</a>
-        <a href="{% url 'app_reports' %}">Relatórios</a>
-        <a href="{% url 'app_configs' %}">Configurações</a>
-    {% endblock %}
+{% block nav %}
+<a href="{% url 'dashboard:app_dashboard' %}" class="active">Dashboard</a>
+<a href="{% url 'colaboradores:app_users' %}">Colaboradores</a>
+<a href="{% url 'equipamentos:app_items' %}">Equipamentos</a>
+<a href="{% url 'emprestimos:app_requests' %}">Empréstimos</a>
+<a href="{% url 'historico:app_history' %}">Movimentações</a>
+<a href="{% url 'relatorios:app_reports' %}">Relatórios</a>
+<a href="{% url 'app_configs' %}">Configurações</a>
+{% endblock %}
 
-    {% block content %}
-        
-        <!-- SAUDAÇÃO PROFISSIONAL E ESTILIZADA -->
-        <div class="welcome-message" style="
+{% block content %}
+
+<div class="welcome-message" style="
             margin-bottom: 30px; 
             padding: 25px; 
             border-radius: 8px; 
@@ -25,19 +24,17 @@
             border: 1px solid #cce0f2;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra suave */
         ">
-            <!-- A SAUDAÇÃO AGORA É ESTÁTICA -->
-            <h1 style="font-size: 26px; color: #1F497D; margin-top: 0; font-weight: 700;">
-                Bem-vindo!
-            </h1>
-            <p style="margin-bottom: 0; color: #555; font-size: 16px;">
-                Utilize o painel abaixo para acompanhar o status atual de seus EPIs e movimentações.
-            </p>
-        </div>
-        <!-- FIM DA SAUDAÇÃO -->
+    <h1 style="font-size: 26px; color: #1F497D; margin-top: 0; font-weight: 700;">
+        Bem-vindo!
+    </h1>
+    <p style="margin-bottom: 0; color: #555; font-size: 16px;">
+        Utilize o painel abaixo para acompanhar o status atual de seus EPIs e movimentações.
+    </p>
+</div>
 
+<!--
         <div class="page-content">
-            <!-- Seu conteúdo principal do Dashboard entra aqui -->
             <p>Dados e gráficos do Dashboard...</p>
         </div>
-
-    {% endblock %}
+        -->
+{% endblock %}

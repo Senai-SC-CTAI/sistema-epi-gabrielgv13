@@ -1,19 +1,45 @@
-{% extends 'base_app.html' %}
+{% extends 'base_model_manager.html' %}
 
 {% block page_title %}
-    Empréstimos
+Empréstimos
 {% endblock %}
 
-{% block nav %}
-    <a href="{% url 'app_dashboard' %}">Dashboard</a>
-    <a href="{% url 'app_users' %}">Colaboradores</a>
-    <a href="{% url 'app_items' %}">Equipamentos</a>
-    <a href="{% url 'app_requests' %}" class="active">Empréstimos</a>
-    <a href="{% url 'app_history' %}">Movimentações</a>
-    <a href="{% url 'app_reports' %}">Relatórios</a>
-    <a href="{% url 'app_configs' %}">Configurações</a>
-    {% endblock %}
-
 {% block content %}
-    <p>Empréstimos</p>
+<div class="page-header">
+    <h2>{{ page_title }}</h2>
+    <a href="{% url add_url_name %}" class="btn-add">Adicionar +</a>
+</div>
+
+<table class="data-table">
+    <thead>
+        <tr>
+            {% for header in headers %}
+            <th>{{ header }}</th>
+            {% endfor %}
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in object_data %}
+        <tr>
+            {% for field in item.fields %}
+            <td>{{ field }}</td>
+            {% endfor %}
+
+            <td class="actions">
+                {% if item.status == 'EMPRESTADO' %}
+                <a href="{% url return_url_name item.pk %}" class="btn-edit"
+                    style="background-color: #ffc107; color: #000;">Devolver</a>
+                {% endif %}
+                <a href="{% url edit_url_name item.pk %}" class="btn-edit">Editar</a>
+                <a href="{% url delete_url_name item.pk %}" class="btn-delete">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="{{ headers|length|add:1 }}">Nenhum item cadastrado ainda.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

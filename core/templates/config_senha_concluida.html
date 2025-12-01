@@ -5,12 +5,12 @@
 {% endblock %}
 
 {% block nav %}
-    <a href="{% url 'app_dashboard' %}">Dashboard</a>
-    <a href="{% url 'app_users' %}">Colaboradores</a>
-    <a href="{% url 'app_items' %}">Equipamentos</a>
-    <a href="{% url 'app_requests' %}">Empréstimos</a>
-    <a href="{% url 'app_history' %}">Movimentações</a>
-    <a href="{% url 'app_reports' %}">Relatórios</a>
+    <a href="{% url 'dashboard:app_dashboard' %}">Dashboard</a>
+    <a href="{% url 'colaboradores:app_users' %}">Colaboradores</a>
+    <a href="{% url 'equipamentos:app_items' %}">Equipamentos</a>
+    <a href="{% url 'emprestimos:app_requests' %}">Empréstimos</a>
+    <a href="{% url 'historico:app_history' %}">Movimentações</a>
+    <a href="{% url 'relatorios:app_reports' %}">Relatórios</a>
     <a href="{% url 'app_configs' %}" class="active">Configurações</a>
 {% endblock %}
 
@@ -23,7 +23,7 @@
         Sua senha foi atualizada com segurança.
     </p>
 
-    <a href="{% url 'app_dashboard' %}" class="btn-save">Voltar ao Dashboard</a>
+    <a href="{% url 'dashboard:app_dashboard' %}" class="btn-save">Voltar ao Dashboard</a>
 
 </div>
 {% endblock %}
