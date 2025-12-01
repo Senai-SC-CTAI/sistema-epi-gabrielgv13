@@ -1,0 +1,12 @@
+{% extends 'base_model_manager.html' %} {% block page_title %}
+    {{ page_title }}
+{% endblock %}
+
+{% block nav %}
+    <a href="{% url 'app_dashboard' %}">Dashboard</a>
+    <a href="{% url 'app_users' %}" class="active">Colaboradores</a> <a href="{% url 'app_items' %}">Equipamentos</a>
+    <a href="{% url 'app_requests' %}">Empréstimos</a>
+    <a href="{% url 'app_history' %}">Movimentações</a>
+    <a href="{% url 'app_reports' %}">Relatórios</a>
+    <a href="{% url 'app_configs' %}">Configurações</a>
+{% endblock %}

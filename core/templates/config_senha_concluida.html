@@ -1,0 +1,29 @@
+{% extends 'base_app.html' %}
+
+{% block page_title %}
+    Senha Alterada
+{% endblock %}
+
+{% block nav %}
+    <a href="{% url 'app_dashboard' %}">Dashboard</a>
+    <a href="{% url 'app_users' %}">Colaboradores</a>
+    <a href="{% url 'app_items' %}">Equipamentos</a>
+    <a href="{% url 'app_requests' %}">Empréstimos</a>
+    <a href="{% url 'app_history' %}">Movimentações</a>
+    <a href="{% url 'app_reports' %}">Relatórios</a>
+    <a href="{% url 'app_configs' %}" class="active">Configurações</a>
+{% endblock %}
+
+{% block content %}
+<div class="page-content" style="text-align: center; padding: 50px;">
+    
+    <h2 style="color: #1F497D; margin-bottom: 20px;">Sucesso!</h2>
+    
+    <p style="font-size: 18px; margin-bottom: 30px;">
+        Sua senha foi atualizada com segurança.
+    </p>
+
+    <a href="{% url 'app_dashboard' %}" class="btn-save">Voltar ao Dashboard</a>
+
+</div>
+{% endblock %}

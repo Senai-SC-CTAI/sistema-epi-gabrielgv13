@@ -1,0 +1,30 @@
+{% extends 'base_app.html' %}
+
+{% block page_title %}
+    Configurações
+{% endblock %}
+
+{% block nav %}
+    <a href="{% url 'app_dashboard' %}">Dashboard</a>
+    <a href="{% url 'app_users' %}">Colaboradores</a>
+    <a href="{% url 'app_items' %}">Equipamentos</a>
+    <a href="{% url 'app_requests' %}">Empréstimos</a>
+    <a href="{% url 'app_history' %}">Movimentações</a>
+    <a href="{% url 'app_reports' %}">Relatórios</a>
+    <a href="{% url 'app_configs' %}" class="active">Configurações</a>
+{% endblock %}
+
+{% block content %}
+    <div class="topbar">
+        <h2>Configurações</h2>
+    </div>
+
+    <div class="page-content">
+        <h3>Segurança e Acesso</h3>
+        <p style="margin-bottom: 20px;">Gerencie a senha de acesso da sua conta.</p>
+
+        <a href="{% url 'password_change' %}" class="btn-add">
+            Alterar Senha
+        </a>
+    </div>
+{% endblock %}

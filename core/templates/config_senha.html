@@ -1,0 +1,37 @@
+{% extends 'base_app.html' %}
+
+{% block page_title %}
+    Alterar Senha
+{% endblock %}
+
+{% block nav %}
+    <a href="{% url 'app_dashboard' %}">Dashboard</a>
+    <a href="{% url 'app_users' %}">Colaboradores</a>
+    <a href="{% url 'app_items' %}">Equipamentos</a>
+    <a href="{% url 'app_requests' %}">Empréstimos</a>
+    <a href="{% url 'app_history' %}">Movimentações</a>
+    <a href="{% url 'app_reports' %}">Relatórios</a>
+    <a href="{% url 'app_configs' %}" class="active">Configurações</a>
+{% endblock %}
+
+{% block content %}
+<div class="topbar">
+    <h2>Alterar Senha</h2>
+</div>
+
+<div class="page-content">
+    <div class="form-container">
+        <form method="post">
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+            
+            <div style="margin-top: 25px;">
+                <button type="submit" class="btn-save">Confirmar Nova Senha</button>
+                
+                <a href="{% url 'app_configs' %}" class="btn-cancel">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

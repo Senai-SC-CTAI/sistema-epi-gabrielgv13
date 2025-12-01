@@ -1,0 +1,54 @@
+{% extends 'base_login.html' %}
+{% load static %}
+{% block content %}
+
+<div class="login-container">
+
+    <div class="login-image-column">
+        </div>
+
+    <div class="login-form-column">
+    
+        <div class="form-wrapper">
+            <h1 class="title">CRIE SEU LOGIN</h1>
+    
+            <form action="{% url 'login_create' %}" method="post">
+                {% csrf_token %}
+    
+                <div class="input-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <p class="error-message">{{ form.email.errors|striptags }}</p>
+                    {% endif %}
+                </div>
+                
+                <div class="input-group">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        <p class="error-message">{{ form.password.errors|striptags }}</p>
+                    {% endif %}
+                </div>
+                
+                <div class="input-group">
+                    {{ form.cf_password.label_tag }}
+                    {{ form.cf_password }}
+                    {% if form.cf_password.errors %}
+                        <p class="error-message">{{ form.cf_password.errors|striptags }}</p>
+                    {% endif %}
+                </div>
+    
+                {% if form.non_field_errors %}
+                    <p class="error-message">{{ form.non_field_errors|striptags }}</p>
+                {% endif %}
+                
+                <div class="form-footer" style="justify-content: flex-end;"> <input type="submit" value="CRIAR" class="submit-btn" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

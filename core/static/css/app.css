@@ -1,0 +1,358 @@
+/* usado para todas as páginas que contém app como prefixo */
+body {
+  display: flex;
+
+  margin: 0;
+  height: 100vh;
+
+  font-family: Arial, sans-serif;
+
+  background-color: #f6f6f6;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 250px;
+  padding-top: 20px;
+  padding: 10px 20px;
+  
+  border-right: 2px solid #ddd;
+
+  background-color: #fff;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: column;
+
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.logo img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+
+.logo h1 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+
+  width: 100%;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 85%;
+  padding: 10px 20px;
+
+  border: 2px solid #000;
+  border-radius: 25px;
+  font-size: 16px;
+  text-decoration: none;
+  transition: 0.2s;
+
+  background-color: #fff;
+  color: #000;
+}
+
+.menu a:hover {
+  background-color: #f0f0f0;
+}
+
+.menu a.active {
+  background-color: #000;
+  color: #fff;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+
+  padding: 30px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 30px;
+}
+
+.topbar .user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 60px;
+  height: 60px;
+
+  border: 2px solid #000;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.page-content {
+  flex-grow: 1;
+
+  padding: 20px;
+
+  border: 2px solid #000;
+  border-radius: 10px;
+  
+  background-color: #fff;
+}
+
+table {
+  width: 100%;
+  margin-top: 10px;
+  
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px;
+  
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+/*/Estilo do botao adicionar /*/
+.btn-add {
+  padding: 10px 20px;
+  display: inline-block;
+  background-color: #1F497D;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.btn-add:hover {
+  background-color: #15375E;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-add:active {
+  background-color: #0A1C36;
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* Estilo para o Botao Editar*/
+.btn-edit {
+  padding: 5px 10px; /* Um pouco menor, adequado para acoes em linha */
+  display: inline-block;
+  background-color: #1F497D;
+  color: white;
+  border: none;
+  border-radius: 3px; /* Cantos levemente menores */
+  font-family: Arial, sans-serif;
+  font-size: 14px; /* Fonte um pouco menor */
+  font-weight: normal;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-right: 5px; /* Espaçamento entre Editar e Excluir */
+}
+
+.btn-edit:hover {
+  background-color: #15375E;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra menor */
+}
+
+.btn-edit:active {
+  background-color: #0A1C36;
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* Estilo para o Botão "Excluir"*/
+.btn-delete {
+  padding: 5px 10px;
+  display: inline-block;
+  background-color: #8B0000;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-delete:hover {
+  background-color: #650000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-delete:active {
+  background-color: #4B0000;
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.btn-save {
+  /* Estilo Base para o Botão Salvar (Azul Escuro) */
+  padding: 8px 15px;
+  display: inline-block;
+  background-color: #1F497D; 
+  color: white;
+  border: none;
+  border-radius: 4px; /* Levemente arredondado */
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-right: 10px; /* Espaçamento entre Salvar e Cancelar */
+}
+
+.btn-save:hover {
+  background-color: #15375E; /* Azul mais escuro no hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-save:active {
+  background-color: #0A1C36; /* Azul no clique */
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.btn-cancel {
+  /* Estilo para o Link Cancelar (Apenas texto, sem fundo) */
+  padding: 8px 10px; /* Padding leve para dar área de clique */
+  display: inline-block;
+  background: none; /* Sem cor de fundo */
+  color: #1F497D; /* Usa o azul primário para o texto do link */
+  border: none;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  text-decoration: underline; /* Mantém o sublinhado, mas suave */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.btn-cancel:hover {
+  color: #0A1C36; /* Azul bem escuro no hover */
+  text-decoration: none; /* Remove o sublinhado no hover */
+}
+
+.messages-container-form {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.message {
+    padding: 15px 25px;
+    border-radius: 5px;
+    color: #fff;
+    display: inline-block;
+    font-weight: bold;
+}
+.message.success { background-color: #28a745; }
+.message.error { background-color: #dc3545; }
+
+.form-container {
+  max-width: 500px; /* Limita a largura para não ficar muito esticado */
+}
+
+/* Estiliza os parágrafos que o Django gera com .as_p */
+.form-container p {
+  margin-bottom: 15px;
+}
+
+/* Estilo das Labels (Nomes dos campos) */
+.form-container label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Estilo dos Inputs (Caixas de texto) */
+.form-container input[type="password"],
+.form-container input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Garante que o padding não quebre a largura */
+  font-size: 14px;
+}
+
+/* Estilo para os textos de ajuda do Django (ex: "A senha deve ter 8 caracteres") */
+.helptext {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-top: 4px;
+}
+
+/* Estilo para lista de erros (caso a senha esteja errada) */
+.errorlist {
+  color: #8B0000;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Botão de Logout discreto no cabeçalho */
+.btn-logout {
+  background: none;
+  border: none;
+  color: #8B0000; /* Vermelho escuro */
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 8px; /* Espaço entre o nome e o botão */
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.btn-logout:hover {
+  text-decoration: underline;
+  color: #ff0000;
+}

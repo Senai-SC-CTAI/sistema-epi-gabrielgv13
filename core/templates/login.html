@@ -1,0 +1,53 @@
+{% extends 'base_login.html' %}
+{% load static %}
+{% block content %}
+
+<div class="login-container">
+
+    <div class="login-image-column">
+        </div>
+
+    <div class="login-form-column">
+
+        <div class="form-wrapper">
+            <h1 class="title">FAÇA SEU LOGIN</h1>
+    
+            <form action="{% url 'login' %}" method="post">
+                {% csrf_token %}
+    
+                <div class="input-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <p class="error-message">{{ form.email.errors|striptags }}</p>
+                    {% endif %}
+                </div>
+                
+                <div class="input-group">
+                    {{ form.password.label_tag }}
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        <p class="error-message">{{ form.password.errors|striptags }}</p>
+                    {% endif %}
+                </div>
+    
+                {% if error %}
+                    <p class="error-message">{{ error }}</p>
+                {% endif %}
+                {% if form.non_field_errors %}
+                    <p class="error-message">{{ form.non_field_errors|striptags }}</p>
+                {% endif %}
+                
+                <div class="form-footer">
+                    <a href="#" class="forgot-password">ESQUECI MINHA SENHA</a>
+                    <input type="submit" value="ENTRAR" class="submit-btn" />
+                </div>
+            </form>
+    
+            <a href="{% url 'login_create' %}" class="crt_login_btn">CRIAR CONTA</a>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends 'base_app.html' %}
+
+{% block page_title %}
+    {{ page_title }} 
+{% endblock %}
+
+{% block nav %}
+    <a href="{% url 'app_dashboard' %}" {% if active_nav == 'dashboard' %}class="active"{% endif %}>Dashboard</a>
+    <a href="{% url 'app_users' %}" {% if active_nav == 'users' %}class="active"{% endif %}>Colaboradores</a>
+    <a href="{% url 'app_items' %}" {% if active_nav == 'items' %}class="active"{% endif %}>Equipamentos</a>
+    <a href="{% url 'app_requests' %}" {% if active_nav == 'requests' %}class="active"{% endif %}>Empréstimos</a>
+    <a href="{% url 'app_history' %}" {% if active_nav == 'history' %}class="active"{% endif %}>Movimentações</a>
+    <a href="{% url 'app_reports' %}" {% if active_nav == 'reports' %}class="active"{% endif %}>Relatórios</a>
+    <a href="{% url 'app_configs' %}" {% if active_nav == 'configs' %}class="active"{% endif %}>Configurações</a>
+{% endblock %}
+
+
+{% block content %}
+    <h2>{{ page_title }}</h2>
+
+    {% if messages %}
+    <div class="messages-container-form">
+        {% for message in messages %}
+            <div class="message {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <form method="POST" class="form-default">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="form-actions">
+            <button type="submit" class="btn-save">Salvar</button>
+            
+            {% if active_nav == 'users' %}
+                <a href="{% url 'app_users' %}" class="btn-cancel">Voltar para Lista</a>
+            {% elif active_nav == 'items' %}
+                <a href="{% url 'app_items' %}" class="btn-cancel">Voltar para Lista</a>
+            {% else %}
+                 <a href="javascript:history.back()" class="btn-cancel">Cancelar</a>
+            {% endif %}
+        </div>
+    </form>
+
+    <style>
+        /* Este CSS centraliza a mensagem APENAS nesta página */
+        .messages-container-form {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .message {
+            padding: 15px 25px; /* Mais espaço horizontal */
+            border-radius: 5px;
+            color: #fff;
+            display: inline-block; /* Fundo se ajusta ao texto */
+            font-weight: bold;
+        }
+        .message.success { background-color: #28a745; }
+        .message.error { background-color: #dc3545; }
+    </style>
+
+    <script>
+        // Este script faz a mensagem desaparecer APENAS nesta página
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const messageContainer = document.querySelector('.messages-container-form');
+            if (messageContainer) {
+                setTimeout(() => {
+                    // Efeito suave de desaparecimento
+                    messageContainer.style.transition = 'opacity 0.5s ease';
+                    messageContainer.style.opacity = '0';
+                    setTimeout(() => { 
+                        messageContainer.style.display = 'none'; 
+                    }, 500); // tempo da transição
+                }, 2000); // 2000 milissegundos = 2 segundos
+            }
+        });
+    </script>
+    {% endblock %}

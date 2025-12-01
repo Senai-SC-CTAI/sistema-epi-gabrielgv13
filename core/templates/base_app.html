@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Estoque de EPI{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+    <header>
+
+    </header>
+<body>
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="{% static 'capacete.png' %}" alt="logo">
+      <h1>Sistema de Gestão de EPIs</h1>
+    </div>
+    <nav class="menu">
+      {% block nav %}
+      {% endblock %}
+    </nav>
+  </aside>
+
+  <main class="content">
+    <div class="topbar">
+      <h2 id="page-title">{% block page_title %}Dashboard{% endblock %}</h2>
+      
+      <div class="user">
+        <div class="user-icon">👤</div>
+        <strong>{{ request.user.username }}</strong>
+
+        <!-- Botão de Logout fica aqui -->
+        <form method="post" action="{% url 'logout' %}" style="display: inline; margin-left: 5px;">
+            {% csrf_token %}
+            <button type="submit" class="btn-logout">(Sair)</button>
+        </form>
+
+      </div>
+    </div>
+
+    <div class="page-content">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </main>
+</body>
+    <footer>
+        
+    </footer>
+</html>

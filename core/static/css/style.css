@@ -1,0 +1,192 @@
+/* ---------------------------------------------------------
+   STYLE.CSS — Estilo renovado para telas de login
+   Paleta: preto & branco | Botões arredondados | Glacial
+   --------------------------------------------------------- */
+
+   @font-face {
+    font-family: 'glacial';
+    src: url('../fonts/GlacialIndifference-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'glacial';
+    src: url('../fonts/GlacialIndifference-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* ---------------------------------------------------------
+   BASE
+   --------------------------------------------------------- */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'glacial', sans-serif;
+    background-color: #ffffff;
+}
+
+/* ---------------------------------------------------------
+   LAYOUT DO LOGIN
+   --------------------------------------------------------- */
+
+.login-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+}
+
+.login-image-column {
+    flex: 1;
+    background-position: center;
+    background-image: url('../004.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login-form-column {
+    flex: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------
+   FORMULÁRIO
+   --------------------------------------------------------- */
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Título */
+.title {
+    text-align: left;
+    margin-bottom: 40px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* ---------------------------------------------------------
+   INPUTS
+   --------------------------------------------------------- */
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.input-group label {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #000;
+}
+
+/* Novo estilo — caixas limpas e modernas */
+.input-group input {
+    padding: 12px 14px;
+    font-size: 16px;
+    border: 2px solid #000;
+    border-radius: 25px;
+    background-color: #f9f9f9;
+    transition: 0.2s ease;
+}
+
+.input-group input:focus {
+    background-color: #ffffff;
+    border-color: #333;
+    outline: none;
+}
+
+/* ---------------------------------------------------------
+   BOTÕES
+   --------------------------------------------------------- */
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 25px;
+}
+
+/* Botão principal */
+.submit-btn {
+    padding: 12px 22px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.submit-btn:hover {
+    background-color: #000;
+    color: #fff;
+}
+
+/* ---------------------------------------------------------
+   LINKS
+   --------------------------------------------------------- */
+
+.forgot-password,
+.crt_login_btn {
+    font-size: 15px;
+    text-decoration: none;
+    color: #000;
+    transition: 0.2s ease;
+}
+
+.forgot-password:hover,
+.crt_login_btn:hover {
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.crt_login_btn {
+    margin-top: 40px;
+    text-align: left;
+}
+
+/* ---------------------------------------------------------
+   MENSAGENS
+   --------------------------------------------------------- */
+
+.error-message {
+    text-align: left;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #dc3545;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVIDADE
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .login-image-column {
+        height: 40vh;
+    }
+
+    .login-form-column {
+        flex: none;
+        padding: 30px;
+    }
+}
