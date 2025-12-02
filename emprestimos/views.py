@@ -11,12 +11,16 @@ import json
 @login_required
 def app_requests(request):
     """
-    READ (List): Mostra todos os empréstimos.
+    READ (List): Mostra todos os empréstimos ATIVOS (não devolvidos).
     """
-    emprestimos = Emprestimo.objects.all().order_by('-data_emprestimo')
+    emprestimos = Emprestimo.objects.filter(status='EMPRESTADO').order_by('-data_emprestimo')
     
     object_data = []
     for emp in emprestimos:
+        # Converter para timezone local antes de formatar
+        data_emprestimo_local = timezone.localtime(emp.data_emprestimo)
+        data_prazo_local = timezone.localtime(emp.data_prazo)
+        
         object_data.append({
             'pk': emp.pk,
             'status': emp.status,
@@ -24,8 +28,8 @@ def app_requests(request):
                 emp.nome.nome, 
                 emp.equipamento.nome, 
                 emp.quantidade,
-                emp.data_emprestimo.strftime('%d/%m/%Y %H:%M'),
-                emp.data_prazo.strftime('%d/%m/%Y %H:%M'),
+                data_emprestimo_local.strftime('%d/%m/%Y %H:%M'),
+                data_prazo_local.strftime('%d/%m/%Y %H:%M'),
                 emp.estoque_disponivel,
                 emp.get_status_display(), # Status
             ]
@@ -109,6 +113,12 @@ def app_requests_delete(request, pk):
     emprestimo = get_object_or_404(Emprestimo, pk=pk)
 
     if request.method == 'POST':
+        # Se o empréstimo ainda está ativo (não foi devolvido), restaurar o estoque
+        if emprestimo.status == 'EMPRESTADO':
+            equipamento = emprestimo.equipamento
+            equipamento.quantidade += emprestimo.quantidade
+            equipamento.save()
+        
         emprestimo.delete()
         messages.success(request, 'Empréstimo excluído com sucesso!')
         return redirect('emprestimos:app_requests')

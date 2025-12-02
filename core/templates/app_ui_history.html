@@ -1,19 +1,42 @@
 {% extends 'base_app.html' %}
 
 {% block page_title %}
-    Movimentações
+{{ page_title }}
 {% endblock %}
 
 {% block nav %}
-    <a href="{% url 'dashboard:app_dashboard' %}">Dashboard</a>
-    <a href="{% url 'colaboradores:app_users' %}">Colaboradores</a>
-    <a href="{% url 'equipamentos:app_items' %}">Equipamentos</a>
-    <a href="{% url 'emprestimos:app_requests' %}">Empréstimos</a>
-    <a href="{% url 'historico:app_history' %}" class="active">Movimentações</a>
-    <a href="{% url 'relatorios:app_reports' %}">Relatórios</a>
-    <a href="{% url 'app_configs' %}">Configurações</a>
-    {% endblock %}
+<a href="{% url 'dashboard:app_dashboard' %}">Dashboard</a>
+<a href="{% url 'colaboradores:app_users' %}">Colaboradores</a>
+<a href="{% url 'equipamentos:app_items' %}">Equipamentos</a>
+<a href="{% url 'emprestimos:app_requests' %}">Empréstimos</a>
+<a href="{% url 'historico:app_history' %}" class="active">Movimentações</a>
+<a href="{% url 'relatorios:app_reports' %}">Relatórios</a>
+<a href="{% url 'app_configs' %}">Configurações</a>
+{% endblock %}
 
 {% block content %}
-    <p>Movimentações</p>
+<h2>{{ page_title }}</h2>
+
+{% if object_data %}
+<table class="data-table">
+    <thead>
+        <tr>
+            {% for header in headers %}
+            <th>{{ header }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for obj in object_data %}
+        <tr>
+            {% for field in obj.fields %}
+            <td>{{ field }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p style="text-align: center; padding: 40px; color: #666;">Nenhum empréstimo devolvido encontrado.</p>
+{% endif %}
 {% endblock %}
