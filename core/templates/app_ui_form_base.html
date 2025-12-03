@@ -7,15 +7,6 @@
 {% block content %}
 <h2>{{ page_title }}</h2>
 
-{% if messages %}
-<div class="messages-container-form">
-    {% for message in messages %}
-    <div class="message {{ message.tags }}">
-        {{ message }}
-    </div>
-    {% endfor %}
-</div>
-{% endif %}
 <form method="POST" class="form-default">
     {% csrf_token %}
     {{ form.as_p }}
@@ -34,47 +25,4 @@
     </div>
 </form>
 
-<style>
-    /* Este CSS centraliza a mensagem APENAS nesta página */
-    .messages-container-form {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .message {
-        padding: 15px 25px;
-        /* Mais espaço horizontal */
-        border-radius: 5px;
-        color: #fff;
-        display: inline-block;
-        /* Fundo se ajusta ao texto */
-        font-weight: bold;
-    }
-
-    .message.success {
-        background-color: #28a745;
-    }
-
-    .message.error {
-        background-color: #dc3545;
-    }
-</style>
-
-<script>
-    // Este script faz a mensagem desaparecer APENAS nesta página
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const messageContainer = document.querySelector('.messages-container-form');
-        if (messageContainer) {
-            setTimeout(() => {
-                // Efeito suave de desaparecimento
-                messageContainer.style.transition = 'opacity 0.5s ease';
-                messageContainer.style.opacity = '0';
-                setTimeout(() => {
-                    messageContainer.style.display = 'none';
-                }, 500); // tempo da transição
-            }, 2000); // 2000 milissegundos = 2 segundos
-        }
-    });
-</script>
 {% endblock %}

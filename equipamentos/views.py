@@ -35,6 +35,7 @@ def app_items_create(request):
         if form.is_valid():
             item_salvo = form.save()
             messages.success(request,  f'Equipamento "{item_salvo.nome}" cadastrado com sucesso!')
+            return redirect('equipamentos:app_items')
         else:
             messages.error(request, 'Falha no cadastro. Verifique os erros abaixo.')
     else:

@@ -35,6 +35,7 @@ def app_users_create(request):
         if form.is_valid():
             colaborador_salvo = form.save()
             messages.success(request, f'Colaborador "{colaborador_salvo.nome}" cadastrado com sucesso!')
+            return redirect('colaboradores:app_users')
         else:
             messages.error(request, 'Falha no cadastro. Verifique os erros abaixo.')
     else:
