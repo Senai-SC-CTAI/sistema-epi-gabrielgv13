@@ -77,6 +77,7 @@ def app_users_delete(request, pk):
 
     if request.method == 'POST':
         colaborador.delete()
+        messages.success(request, 'Colaborador excluído com sucesso!')
         return redirect('colaboradores:app_users')
 
     context = {

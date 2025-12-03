@@ -77,6 +77,7 @@ def app_items_delete(request, pk):
 
     if request.method == 'POST':
         item.delete()
+        messages.success(request, 'Equipamento excluído com sucesso!')
         return redirect('equipamentos:app_items')
 
     context = {
