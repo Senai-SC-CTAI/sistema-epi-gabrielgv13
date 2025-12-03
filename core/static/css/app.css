@@ -1,59 +1,93 @@
-/* usado para todas as páginas que contém app como prefixo */
+/* =============================================================================
+   SISTEMA DE GESTÃO DE EPIs - MODERN DESIGN SYSTEM
+   Primary Color: #1F497D (Professional Blue)
+   Font: Glacial Indifference / Arial
+   ============================================================================= */
+
+/* Import Glacial Font */
+@font-face {
+  font-family: 'glacial';
+  src: url('../fonts/GlacialIndifference-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'glacial';
+  src: url('../fonts/GlacialIndifference-Bold.woff2') format('woff2');
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* =============================================================================
+   BASE STYLES
+   ============================================================================= */
+
 body {
   display: flex;
-
   margin: 0;
   height: 100vh;
-
-  font-family: Arial, sans-serif;
-
+  font-family: 'glacial', Arial, sans-serif;
   background-color: #f6f6f6;
+  color: #333;
 }
+
+title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1F497D;
+}
+
+/* =============================================================================
+   SIDEBAR
+   ============================================================================= */
 
 .sidebar {
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  width: 250px;
-  padding-top: 20px;
-  padding: 10px 20px;
-  
-  border-right: 2px solid #ddd;
-
-  background-color: #fff;
+  width: 280px;
+  padding: 30px 20px;
+  border-right: 1px solid #ddd;
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
 }
 
+/* Logo Area */
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
   flex-direction: column;
-
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   text-align: center;
 }
 
 .logo img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   object-fit: contain;
-  margin-right: 10px;
+  filter: drop-shadow(0 2px 4px rgba(31, 73, 125, 0.2));
 }
 
 .logo h1 {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
+  color: #1F497D;
+  line-height: 1.3;
+  margin: 0;
+  letter-spacing: 0.5px;
 }
 
+/* Navigation Menu */
 .menu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-
+  gap: 12px;
   width: 100%;
+  padding: 0 20px;
 }
 
 .menu a {
@@ -61,298 +95,503 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-
-  width: 85%;
-  padding: 10px 20px;
-
-  border: 2px solid #000;
-  border-radius: 25px;
+  width: calc(100% - 20px);
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
   font-size: 16px;
+  font-weight: 600;
   text-decoration: none;
-  transition: 0.2s;
-
-  background-color: #fff;
-  color: #000;
+  transition: all 0.3s ease;
+  background-color: #1F497D;
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(31, 73, 125, 0.2);
 }
 
 .menu a:hover {
-  background-color: #f0f0f0;
+  background-color: #15375E;
+  box-shadow: 0 4px 8px rgba(31, 73, 125, 0.3);
+  transform: translateY(-2px);
+}
+
+.menu a:active {
+  background-color: #0A1C36;
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(31, 73, 125, 0.2);
 }
 
 .menu a.active {
-  background-color: #000;
+  background-color: #0A1C36;
   color: #fff;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(31, 73, 125, 0.2);
 }
+
+/* =============================================================================
+   MAIN CONTENT AREA
+   ============================================================================= */
 
 .content {
   flex: 1;
   display: flex;
   flex-direction: column;
-
-  padding: 30px;
+  padding: 30px 40px;
+  overflow-y: auto;
 }
 
+/* Top Bar */
 .topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e8f0f8;
+}
+
+.topbar h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1F497D;
+  margin: 0;
 }
 
 .topbar .user {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  padding: 8px 16px;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .user-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 60px;
-  height: 60px;
-
-  border: 2px solid #000;
+  width: 45px;
+  height: 45px;
+  border: 2px solid #1F497D;
   border-radius: 50%;
   font-weight: bold;
+  font-size: 20px;
+  background: linear-gradient(135deg, #1F497D 0%, #15375E 100%);
+  color: #fff;
 }
 
+.topbar .user strong {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Page Content Container */
 .page-content {
   flex-grow: 1;
-
-  padding: 20px;
-
-  border: 2px solid #000;
-  border-radius: 10px;
-  
+  padding: 30px;
+  border-radius: 12px;
   background-color: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
+
+/* =============================================================================
+   TABLES
+   ============================================================================= */
 
 table {
   width: 100%;
-  margin-top: 10px;
-  
-  border-collapse: collapse;
+  margin-top: 20px;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-th, td {
+th,
+td {
   text-align: left;
-  padding: 10px;
-  
-  border-bottom: 1px solid #ddd;
+  padding: 14px 16px;
+  border-bottom: 1px solid #e8f0f8;
 }
 
 th {
-  background-color: #f0f0f0;
+  background: linear-gradient(180deg, #1F497D 0%, #15375E 100%);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/*/Estilo do botao adicionar /*/
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* =============================================================================
+   BUTTONS
+   ============================================================================= */
+
+/* Primary Add Button */
 .btn-add {
-  padding: 10px 20px;
+  padding: 12px 24px;
   display: inline-block;
-  background-color: #1F497D;
+  background: linear-gradient(135deg, #1F497D 0%, #15375E 100%);
   color: white;
   border: none;
-  border-radius: 5px;
-  font-family: Arial, sans-serif;
+  border-radius: 8px;
+  font-family: 'glacial', Arial, sans-serif;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 600;
   text-align: center;
+  text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.1s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(31, 73, 125, 0.3);
 }
 
 .btn-add:hover {
-  background-color: #15375E;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #15375E 0%, #0A1C36 100%);
+  box-shadow: 0 4px 12px rgba(31, 73, 125, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn-add:active {
-  background-color: #0A1C36;
-  transform: translateY(1px);
-  box-shadow: none;
+  background: #0A1C36;
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(31, 73, 125, 0.3);
 }
 
-/* Estilo para o Botao Editar*/
+/* Edit Button */
 .btn-edit {
-  padding: 5px 10px; /* Um pouco menor, adequado para acoes em linha */
+  padding: 8px 16px;
   display: inline-block;
   background-color: #1F497D;
   color: white;
   border: none;
-  border-radius: 3px; /* Cantos levemente menores */
-  font-family: Arial, sans-serif;
-  font-size: 14px; /* Fonte um pouco menor */
-  font-weight: normal;
+  border-radius: 6px;
+  font-family: 'glacial', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  margin-right: 5px; /* Espaçamento entre Editar e Excluir */
+  transition: all 0.2s ease;
+  margin-right: 8px;
 }
 
 .btn-edit:hover {
   background-color: #15375E;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra menor */
+  box-shadow: 0 2px 6px rgba(31, 73, 125, 0.3);
 }
 
 .btn-edit:active {
   background-color: #0A1C36;
-  transform: translateY(1px);
-  box-shadow: none;
+  transform: scale(0.98);
 }
 
-/* Estilo para o Botão "Excluir"*/
+/* Delete Button */
 .btn-delete {
-  padding: 5px 10px;
+  padding: 10px 20px;
   display: inline-block;
-  background-color: #8B0000;
+  background-color: #dc3545;
   color: white;
   border: none;
-  border-radius: 3px;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-  font-weight: normal;
+  border-radius: 8px;
+  font-family: 'glacial', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition: all 0.2s ease;
 }
 
 .btn-delete:hover {
-  background-color: #650000;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #c82333;
+  box-shadow: 0 2px 6px rgba(220, 53, 69, 0.3);
 }
 
 .btn-delete:active {
-  background-color: #4B0000;
-  transform: translateY(1px);
-  box-shadow: none;
+  background-color: #bd2130;
+  transform: scale(0.98);
 }
 
+/* Save Button */
 .btn-save {
-  /* Estilo Base para o Botão Salvar (Azul Escuro) */
-  padding: 8px 15px;
+  padding: 10px 20px;
   display: inline-block;
-  background-color: #1F497D; 
+  background: linear-gradient(135deg, #1F497D 0%, #15375E 100%);
   color: white;
   border: none;
-  border-radius: 4px; /* Levemente arredondado */
-  font-family: Arial, sans-serif;
+  border-radius: 8px;
+  font-family: 'glacial', Arial, sans-serif;
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 600;
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  margin-right: 10px; /* Espaçamento entre Salvar e Cancelar */
+  transition: all 0.3s ease;
+  margin-right: 12px;
+  box-shadow: 0 2px 6px rgba(31, 73, 125, 0.3);
 }
 
 .btn-save:hover {
-  background-color: #15375E; /* Azul mais escuro no hover */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #15375E 0%, #0A1C36 100%);
+  box-shadow: 0 3px 8px rgba(31, 73, 125, 0.4);
 }
 
 .btn-save:active {
-  background-color: #0A1C36; /* Azul no clique */
-  transform: translateY(1px);
-  box-shadow: none;
+  background: #0A1C36;
+  transform: scale(0.98);
 }
 
+/* Cancel Button */
 .btn-cancel {
-  /* Estilo para o Link Cancelar (Apenas texto, sem fundo) */
-  padding: 8px 10px; /* Padding leve para dar área de clique */
+  padding: 10px 20px;
   display: inline-block;
-  background: none; /* Sem cor de fundo */
-  color: #1F497D; /* Usa o azul primário para o texto do link */
-  border: none;
-  font-family: Arial, sans-serif;
+  background: #fff;
+  color: #1F497D;
+  border: 2px solid #1F497D;
+  border-radius: 8px;
+  font-family: 'glacial', Arial, sans-serif;
   font-size: 15px;
-  font-weight: bold;
-  text-decoration: underline; /* Mantém o sublinhado, mas suave */
+  font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .btn-cancel:hover {
-  color: #0A1C36; /* Azul bem escuro no hover */
-  text-decoration: none; /* Remove o sublinhado no hover */
+  background: linear-gradient(135deg, #1F497D 0%, #15375E 100%);
+  color: #fff;
+  border-color: #1F497D;
+  box-shadow: 0 2px 6px rgba(31, 73, 125, 0.3);
 }
 
-.messages-container-form {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 20px;
+.btn-cancel:active {
+  background: #0A1C36;
+  border-color: #0A1C36;
+  transform: scale(0.98);
 }
-.message {
-    padding: 15px 25px;
-    border-radius: 5px;
-    color: #fff;
-    display: inline-block;
-    font-weight: bold;
+
+/* Logout Button */
+.btn-logout {
+  background: none;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  margin-left: 8px;
+  padding: 4px 8px;
+  font-family: 'glacial', Arial, sans-serif;
+  transition: all 0.2s ease;
+  border-radius: 4px;
 }
-.message.success { background-color: #28a745; }
-.message.error { background-color: #dc3545; }
+
+.btn-logout:hover {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* =============================================================================
+   FORMS
+   ============================================================================= */
 
 .form-container {
-  max-width: 500px; /* Limita a largura para não ficar muito esticado */
+  max-width: 600px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
-/* Estiliza os parágrafos que o Django gera com .as_p */
 .form-container p {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-/* Estilo das Labels (Nomes dos campos) */
 .form-container label {
   display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-/* Estilo dos Inputs (Caixas de texto) */
-.form-container input[type="password"],
-.form-container input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box; /* Garante que o padding não quebre a largura */
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #1F497D;
   font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-/* Estilo para os textos de ajuda do Django (ex: "A senha deve ter 8 caracteres") */
+.form-container input[type="password"],
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="number"],
+.form-container select,
+.form-container textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e8f0f8;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 15px;
+  font-family: 'glacial', Arial, sans-serif;
+  transition: all 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+  background-color: #fff;
+  border-color: #1F497D;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(31, 73, 125, 0.1);
+}
+
 .helptext {
   display: block;
   font-size: 12px;
   color: #666;
-  margin-top: 4px;
+  margin-top: 6px;
+  font-style: italic;
 }
 
-/* Estilo para lista de erros (caso a senha esteja errada) */
 .errorlist {
-  color: #8B0000;
+  color: #dc3545;
   list-style: none;
   padding: 0;
+  margin: 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* =============================================================================
+   MESSAGES
+   ============================================================================= */
+
+.messages-container-global {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.messages-container-form {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.message {
+  padding: 16px 28px;
+  border-radius: 8px;
+  color: #fff;
+  display: inline-block;
+  font-weight: 600;
   margin-bottom: 10px;
-  font-size: 14px;
-  font-weight: bold;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+  font-size: 15px;
 }
 
-/* Botão de Logout discreto no cabeçalho */
-.btn-logout {
-  background: none;
-  border: none;
-  color: #8B0000; /* Vermelho escuro */
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  margin-left: 8px; /* Espaço entre o nome e o botão */
-  padding: 0;
-  font-family: Arial, sans-serif;
+.message.success {
+  background: linear-gradient(135deg, #28a745 0%, #20923b 100%);
 }
 
-.btn-logout:hover {
-  text-decoration: underline;
-  color: #ff0000;
+.message.error {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+}
+
+.message.warning {
+  background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+  color: #000;
+}
+
+.message.info {
+  background: linear-gradient(135deg, #17a2b8 0%, #138496 100%);
+}
+
+/* =============================================================================
+   PAGE HEADER (for list pages)
+   ============================================================================= */
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e8f0f8;
+}
+
+.page-header h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1F497D;
+  margin: 0;
+}
+
+/* =============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================= */
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 240px;
+    padding: 20px 15px;
+  }
+
+  .content {
+    padding: 20px 30px;
+  }
+
+  .logo h1 {
+    font-size: 16px;
+  }
+
+  .menu a {
+    font-size: 15px;
+    padding: 12px 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 15px;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .menu a {
+    flex: 1 1 calc(50% - 8px);
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .page-content {
+    padding: 20px;
+  }
 }

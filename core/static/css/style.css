@@ -1,9 +1,9 @@
-/* ---------------------------------------------------------
-   STYLE.CSS — Estilo renovado para telas de login
-   Paleta: preto & branco | Botões arredondados | Glacial
-   --------------------------------------------------------- */
+/* =============================================================================
+   SISTEMA DE GESTÃO DE EPIs - LOGIN PAGES
+   Modern Blue Theme - Consistent with App Design
+   ============================================================================= */
 
-   @font-face {
+@font-face {
     font-family: 'glacial';
     src: url('../fonts/GlacialIndifference-Regular.woff2') format('woff2');
     font-weight: normal;
@@ -17,21 +17,22 @@
     font-style: normal;
 }
 
-/* ---------------------------------------------------------
+/* =============================================================================
    BASE
-   --------------------------------------------------------- */
+   ============================================================================= */
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'glacial', sans-serif;
-    background-color: #ffffff;
+    font-family: 'glacial', Arial, sans-serif;
+    background-color: #f6f6f6;
 }
 
-/* ---------------------------------------------------------
-   LAYOUT DO LOGIN
-   --------------------------------------------------------- */
+/* =============================================================================
+   LOGIN LAYOUT
+   ============================================================================= */
 
 .login-container {
     display: flex;
@@ -46,6 +47,17 @@ html, body {
     background-image: url('../004.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+    position: relative;
+}
+
+.login-image-column::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(31, 73, 125, 0.7) 0%, rgba(10, 28, 54, 0.8) 100%);
 }
 
 .login-form-column {
@@ -55,126 +67,176 @@ html, body {
     justify-content: center;
     padding: 40px;
     box-sizing: border-box;
+    background-color: #ffffff;
 }
 
-/* ---------------------------------------------------------
-   FORMULÁRIO
-   --------------------------------------------------------- */
+/* =============================================================================
+   FORM WRAPPER
+   ============================================================================= */
 
 .form-wrapper {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 450px;
+    max-width: 480px;
+    background-color: #fff;
+    padding: 50px 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(31, 73, 125, 0.15);
 }
 
-/* Título */
+/* Title */
 .title {
     text-align: left;
     margin-bottom: 40px;
     font-size: 32px;
     font-weight: bold;
-    color: #000;
+    color: #1F497D;
+    letter-spacing: 0.5px;
 }
 
-/* ---------------------------------------------------------
+/* =============================================================================
    INPUTS
-   --------------------------------------------------------- */
+   ============================================================================= */
 
 .input-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     width: 100%;
 }
 
 .input-group label {
     margin-bottom: 10px;
-    font-size: 16px;
-    color: #000;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1F497D;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-/* Novo estilo — caixas limpas e modernas */
 .input-group input {
-    padding: 12px 14px;
+    padding: 14px 18px;
     font-size: 16px;
-    border: 2px solid #000;
-    border-radius: 25px;
-    background-color: #f9f9f9;
-    transition: 0.2s ease;
+    border: 2px solid #e8f0f8;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+    font-family: 'glacial', Arial, sans-serif;
 }
 
 .input-group input:focus {
     background-color: #ffffff;
-    border-color: #333;
+    border-color: #1F497D;
     outline: none;
+    box-shadow: 0 0 0 3px rgba(31, 73, 125, 0.1);
 }
 
-/* ---------------------------------------------------------
-   BOTÕES
-   --------------------------------------------------------- */
+/* =============================================================================
+   BUTTONS
+   ============================================================================= */
 
 .form-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
-/* Botão principal */
+/* Submit Button */
 .submit-btn {
-    padding: 12px 22px;
-    background-color: #fff;
-    color: #000;
-    border: 2px solid #000;
-    border-radius: 25px;
-    font-size: 15px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #1F497D 0%, #15375E 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
-    transition: 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(31, 73, 125, 0.3);
+    font-family: 'glacial', Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .submit-btn:hover {
-    background-color: #000;
-    color: #fff;
+    background: linear-gradient(135deg, #15375E 0%, #0A1C36 100%);
+    box-shadow: 0 6px 16px rgba(31, 73, 125, 0.4);
+    transform: translateY(-2px);
 }
 
-/* ---------------------------------------------------------
+.submit-btn:active {
+    background: #0A1C36;
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(31, 73, 125, 0.3);
+}
+
+/* =============================================================================
    LINKS
-   --------------------------------------------------------- */
+   ============================================================================= */
 
 .forgot-password,
 .crt_login_btn {
     font-size: 15px;
     text-decoration: none;
-    color: #000;
-    transition: 0.2s ease;
+    color: #1F497D;
+    transition: all 0.2s ease;
+    font-weight: 500;
 }
 
 .forgot-password:hover,
 .crt_login_btn:hover {
-    font-weight: bold;
-    transition: 0.2s ease;
+    color: #0A1C36;
+    font-weight: 600;
 }
 
 .crt_login_btn {
     margin-top: 40px;
     text-align: left;
+    display: inline-block;
+    padding: 12px 24px;
+    border: 2px solid #1F497D;
+    border-radius: 10px;
+    transition: all 0.3s ease;
 }
 
-/* ---------------------------------------------------------
-   MENSAGENS
-   --------------------------------------------------------- */
+.crt_login_btn:hover {
+    background-color: #1F497D;
+    color: #fff;
+}
+
+/* =============================================================================
+   MESSAGES
+   ============================================================================= */
 
 .error-message {
     text-align: left;
-    margin-top: 15px;
+    margin-top: 12px;
+    padding: 12px 16px;
     font-size: 14px;
     color: #dc3545;
+    background-color: #ffe6e6;
+    border-left: 4px solid #dc3545;
+    border-radius: 6px;
+    font-weight: 500;
 }
 
-/* ---------------------------------------------------------
+.success-message {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    font-size: 15px;
+    color: #28a745;
+    background-color: #e6f9ec;
+    border-left: 4px solid #28a745;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* =============================================================================
    RESPONSIVIDADE
-   --------------------------------------------------------- */
+   ============================================================================= */
 
 @media (max-width: 900px) {
     .login-container {
@@ -182,11 +244,45 @@ html, body {
     }
 
     .login-image-column {
-        height: 40vh;
+        height: 35vh;
     }
 
     .login-form-column {
         flex: none;
-        padding: 30px;
+        padding: 30px 20px;
+    }
+
+    .form-wrapper {
+        padding: 40px 30px;
+        box-shadow: none;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 600px) {
+    .form-wrapper {
+        padding: 30px 20px;
+    }
+
+    .title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+
+    .form-footer {
+        flex-direction: column-reverse;
+        gap: 20px;
+        align-items: stretch;
+    }
+
+    .submit-btn {
+        width: 100%;
+    }
+
+    .forgot-password {
+        text-align: center;
     }
 }
