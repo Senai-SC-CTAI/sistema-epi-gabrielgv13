@@ -7,7 +7,7 @@ setup/__pycache__/
 *$py.class
 
 #Personal additions
-.vscode/
+.vscode
 
 # C extensions
 *.so
