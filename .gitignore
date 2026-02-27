@@ -6,6 +6,9 @@ setup/__pycache__/
 *.py[codz]
 *$py.class
 
+#Personal additions
+.vscode/
+
 # C extensions
 *.so
 
