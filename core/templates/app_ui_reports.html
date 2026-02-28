@@ -15,5 +15,8 @@
     {% endblock %}
 
 {% block content %}
-    <p>Relatórios</p>
+    <div class="page-header">
+        <h2>Relatórios</h2>
+        <a href="{% url 'relatorios:download_movimentacoes_csv' %}" class="btn-add">Download CSV de Movimentações</a>
+    </div>
 {% endblock %}
