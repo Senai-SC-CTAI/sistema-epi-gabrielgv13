@@ -403,12 +403,7 @@ class HistoricoTestCase(TestCase):
         """
         Testa se ao excluir um empréstimo, ele não aparece na aba de movimentações (histórico).
         Valida que registros deletados são removidos completamente do histórico.
-        
-        Cenário:
-        - Criar empréstimo e devolver (status = DEVOLVIDO)
-        - Verificar que aparece no histórico
-        - Deletar o empréstimo
-        - Verificar que NÃO aparece mais no histórico
+
         """
         # 1. Criar empréstimo
         emprestimo = Emprestimo.objects.create(
