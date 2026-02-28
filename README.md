@@ -66,7 +66,7 @@ python manage.py runserver
 
 5. **Acesse em seu navegador:**
 ```
-http://localhost:8000
+http://127.0.0.1:8000/
 ```
 
 ---
@@ -123,3 +123,4 @@ Adicione seus modelos ao arquivo `admin.py` para gerenciar via painel administra
 
 - Adicionar testes unitários
 - Melhorar interface visual
+
