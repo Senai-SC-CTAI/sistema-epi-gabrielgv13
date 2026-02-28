@@ -21,7 +21,10 @@ class EmprestimoForm(forms.ModelForm):
         equipamento = cleaned_data.get('equipamento')
         quantidade = cleaned_data.get('quantidade')
 
-        if equipamento and quantidade:
+        if quantidade is not None and quantidade < 1:
+            raise forms.ValidationError("A quantidade mínima para empréstimo é 1.")
+
+        if equipamento and quantidade is not None:
             if quantidade > equipamento.quantidade:
                 raise forms.ValidationError(f"Quantidade indisponível. Estoque atual: {equipamento.quantidade}")
             

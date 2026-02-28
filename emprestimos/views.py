@@ -30,14 +30,13 @@ def app_requests(request):
                 emp.quantidade,
                 data_emprestimo_local.strftime('%d/%m/%Y %H:%M'),
                 data_prazo_local.strftime('%d/%m/%Y %H:%M'),
-                emp.estoque_disponivel,
                 emp.get_status_display(), # Status
             ]
         })
 
     context = {
         'page_title': 'Empréstimos',
-        'headers': ['Colaborador', 'Equipamento', 'Quantidade', 'Data Empréstimo', 'Prazo Devolução', 'Estoque Disponível', 'Status'],
+        'headers': ['Colaborador', 'Equipamento', 'Quantidade', 'Data Empréstimo', 'Prazo Devolução', 'Status'],
         'object_data': object_data,
         'add_url_name': 'emprestimos:app_requests_create',
         'edit_url_name': 'emprestimos:app_requests_edit',   
